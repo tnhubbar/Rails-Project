@@ -1,6 +1,9 @@
 <h1>Sign Up Form </h1>
 
 <%= form_for @user, controller: 'users', action: 'create' do |f| %>
+<%= f.label :name %>
+  <%= f.text_field :name %>
+  
   <%= f.label :username %>
   <%= f.text_field :username %>
 

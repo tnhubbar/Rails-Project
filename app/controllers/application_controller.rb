@@ -1,23 +1,27 @@
 class ApplicationController < ActionController::Base
-    before_action :current_user
+    #before_action :current_user
 
     def welcome 
-    if !session[:user_id]
-        redirect_to controller: 'users', action: 'new'
-    else 
+        if !session[:user_id] 
+            flash.alert = "User not found."
+            redirect_to login_path 
+        else 
+            current_user 
+            binding.pry 
+            render 'welcome'
+        end 
     end
-end
 
     def current_user
         @user = (User.find_by(id: session[:user_id]) || User.new)
-      end
+    end
     
-      def logged_in?
-        current_user.id != nil
-      end
+     # def logged_in?
+        #current_user.id != nil
+      #end
     
-      def require_logged_in
-        return redirect_to(controller: 'sessions', action: 'new') unless logged_in?
-      end
+      #def require_logged_in
+        #return redirect_to(controller: 'sessions', action: 'new') unless logged_in?
+      #end
 
 end
