@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+    helper_method :current_user 
     
     def new
         @user = User.new 
@@ -10,6 +11,10 @@ class UsersController < ApplicationController
         session[:user_id] = @user.id
         redirect_to user_path(@user)
     end
+
+    def show
+        @user = current_user
+    end 
 
 
     def user_params

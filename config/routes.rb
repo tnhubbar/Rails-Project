@@ -2,10 +2,10 @@ Rails.application.routes.draw do
   
   resources :exercises
   resources :users
-  resources :workout_routines
+  resources :routines
   
   resources :categories do 
-    resources :workout_routines 
+    resources :routines 
   end 
 
   resources :exercises

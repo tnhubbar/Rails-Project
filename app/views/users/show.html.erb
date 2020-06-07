@@ -1,1 +1,9 @@
 Hello, <%= @user.name %>
+
+Below are your current Workout Routines! 
+<% @user.routines.each do |r| %>
+<%= r.name %>
+<% end %>
+
+Or, add a new routine to your List: 
+<% link_to "Add Routine", new_routine_path %>

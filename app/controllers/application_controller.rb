@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-    #before_action :current_user
+    helper_method :current_user
 
     def welcome 
         if !session[:user_id] 
@@ -7,8 +7,8 @@ class ApplicationController < ActionController::Base
             redirect_to login_path 
         else 
             current_user 
-            binding.pry 
-            render 'welcome'
+            redirect_to user_path(@user) 
+            binding.pry
         end 
     end
 

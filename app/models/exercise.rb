@@ -1,3 +1,3 @@
 class Exercise < ApplicationRecord
-    belongs_to :workout_routine 
+    belongs_to :routine 
 end
