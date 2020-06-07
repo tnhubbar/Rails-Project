@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
   
-  resources :users do 
+  resources :exercises
+  resources :users
+  resources :workout_routines
+  
+  resources :categories do 
     resources :workout_routines 
   end 
 
-  resources :workout_routines 
   resources :exercises
   root 'application#welcome'
   get '/login' => 'sessions#new'
