@@ -1,17 +1,47 @@
 <h1>Add a New Routine to your List</h1>
 
 <%= form_for @routine  do |f| %>
-<%= f.label :name %>
+
+  <%= f.label :name %>
 <%= f.text_field :name %>
+
+<%= f.label :description %>
+<%= f.text_field :description %>
 
 <%= f.label :duration %>
 <%= f.text_field :duration %>
 
-<%= fields_for :category do |form| %>
-    <%= f.label :category %>
-    <%= f.text_field :category %>
+<%= f.fields_for :categories do |cat| %>
+<%= cat.label "Category Name" %>
+<%= cat.text_field :name, list: "categories_autocomplete" %>
+  <datalist id="categories_autocomplete">
+    <% Category.all.each do |category| %>
+      <option value="<%= category.name %>">
     <% end %>
+  </datalist>
+  <% end %>
+
+  <br/>
+  <br/>
+
+   <%= f.fields_for :exercise do |eform| %>
+    <%= eform.label "1st Exercise"%>
+    <%= eform.text_field :name %>
     <br/>
+    <% end %>
+
+    <%= f.fields_for :exercise do |eform| %>
+    <%= eform.label "2nd Exercise"%>
+    <%= eform.text_field :name %>
+    <br/>
+    <% end %>
+
+      <%= f.fields_for :exercise do |eform| %>
+    <%= eform.label "3rd Exercise"%>
+    <%= eform.text_field :name %>
+    <br/>
+    <% end %>
+  
 
     <%= f.submit %>
 <%end %>
