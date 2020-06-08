@@ -1,9 +1,14 @@
-Hello, <%= @user.name %>
 
-Below are your current Workout Routines! 
+
+<h1>Hello, <%= @user.name %></h1>
+<br>
+
+<h2>Below are your current Workout Routines! </h2>
 <% @user.routines.each do |r| %>
 <%= r.name %>
 <% end %>
 
-Or, add a new routine to your List: 
-<% link_to "Add Routine", new_routine_path %>
+<br>
+
+<h2>Or, add a new routine to your List: </h2>
+<%= link_to "Add Routine", new_routine_path %>

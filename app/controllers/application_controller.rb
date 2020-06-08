@@ -2,14 +2,11 @@ class ApplicationController < ActionController::Base
     helper_method :current_user
 
     def welcome 
-        if !session[:user_id] 
-            flash.alert = "User not found."
-            redirect_to login_path 
+        if @user 
+       @user = User.find_by(id: session[:user_id])
         else 
-            current_user 
-            redirect_to user_path(@user) 
-            binding.pry
-        end 
+            redirect_to login_path
+        end
     end
 
     def current_user

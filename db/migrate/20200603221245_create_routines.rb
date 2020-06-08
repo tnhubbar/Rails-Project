@@ -3,7 +3,7 @@ class CreateRoutines < ActiveRecord::Migration[6.0]
     create_table :routines do |t|
       t.string :name
       t.text :description
-      t.interger :duration   
+      t.integer :duration   
       t.integer :user_id
       t.integer :category_id 
 
