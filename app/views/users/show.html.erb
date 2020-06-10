@@ -5,10 +5,33 @@
 
 <h2>Below are your current Workout Routines! </h2>
 <% @user.routines.each do |r| %>
-<%= r.name %>
+<%= link_to r.name, routine_path(r) %> <br/><br/>
 <% end %>
 
-<br>
+<div>
+  <h3>Filter By Duration :</h3>
+  <%= form_tag("/routines", method: "get") do %>
+    <label>Routines less than or equal to is:</label>
+    <input type="integer" id="routine_duration" name="routine[duration]">
+    <%= submit_tag "Filter" %>
+  <% end %>
+</div>
 
+<br>
 <h2>Or, add a new routine to your List: </h2>
 <%= link_to "Add Routine", new_routine_path %>
+
+<h1>You can also check out your routines by category: </h1>
+<% @user.categories.each do |c| %>
+<%= link_to c.name , category_routines_path(c.id) %><br/>
+<% end %>
+
+
+
+Or check out all of your exercises: 
+
+
+
+<%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
+  <input type=submit value='logout'>
+<% end %>

@@ -1,1 +1,7 @@
 <h2><%= @routine.name %></h2>
+<%= @routine.category.name  %>
+<%= @routine.description %>
+
+Check out all the exercises in this routine:
+<%= link_to "Exercises", routine_exercises_path(@routine) %>
+routine_exercises_path       exercises#index

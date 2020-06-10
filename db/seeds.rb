@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 taryn = User.create(name: "taryn", username: "tnhubbar", password: "Ricardo")
 speed = Routine.create(name: "speed", description: "This is fast")
-cardio = Category.create(name: "Cardo")
+cardio = Category.create(name: "Cardio")
 Category.create(name: "Strength Training")
 Category.create(name: "Yoga")
 Category.create(name: "Stretches")

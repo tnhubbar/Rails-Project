@@ -10,6 +10,16 @@
   </head>
 
   <body>
+     <div class="topnav">
+        <% if current_user %>
+       <%= link_to "My Routines", user_path(current_user.id) %>
+        <%= link_to "My Exercises"%>
+        <%= link_to "My Categories"%>
+        <%=link_to "Logout", logout_path, method: :post %>
+      <%end%>
+      </div>
+     
     <%= yield %>
+  
   </body>
 </html>

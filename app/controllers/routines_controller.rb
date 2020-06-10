@@ -1,16 +1,32 @@
 class RoutinesController < ApplicationController
+    helper_method :params
+     
     
     def index
-        @routines - Routine.all 
+        @categories = Category.all 
+        if !params[:category].blank?
+            @routines = Routine.all.by_category(params[:category_id]) 
+        elsif !params[:routine][:duration].blank?
+            @routines = Routine.by_duration(params[:routine][:duration])
+        else 
+        @routines = Routine.all 
+        end  
     end 
    
     def new
         @routine = Routine.new
+        @routine.exercises.build
+        @routine.exercises.build
+        @routine.exercises.build
+        @routine.build_category
+
     end 
 
-    def create
-        binding.pry
-        @routine = Routine.create(routine_params)
+    def create 
+        
+        @routine = Routine.new(routine_params)
+        @routine.user = current_user  
+        @routine.save 
         if @routine.save
         redirect_to routine_path(@routine)
         else 
@@ -43,10 +59,10 @@ class RoutinesController < ApplicationController
     
 
     def show 
-        @routine = Routine.find_by(id: params[:id])
+        @routine = Routine.find_by(id: params[:id]) 
     end 
 
     def routine_params
-        params.require(:routine).permit(:name, :duration, :description, categories_attributes: [:name], exercises_attributes: [:name])
+        params.require(:routine).permit(:name, :duration, :description, category_attributes: [:name, :id], exercises_attributes: [:name, :id])
     end 
 end

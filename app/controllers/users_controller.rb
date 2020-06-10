@@ -7,13 +7,16 @@ class UsersController < ApplicationController
     
     def create 
         @user = User.create(user_params)
-        return head(:forbidden) unless @user.save
+        if @user.save
         session[:user_id] = @user.id
         redirect_to user_path(@user)
+        else 
+         render 'new'   
+        end
     end
 
     def show
-        @user = current_user
+        @user = (User.find_by(id: session[:user_id]))
     end 
 
 

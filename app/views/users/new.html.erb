@@ -1,5 +1,15 @@
 <h1>Sign Up Form </h1>
 
+<p id="notice"><%= notice %></p>
+
+<% if @user.errors.any? %>
+  <ul>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <%end%>
+  </ul>
+<%end%>
+
 <%= form_for @user, controller: 'users', action: 'create' do |f| %>
 <%= f.label "Name:" %>
   <%= f.text_field :name %>
