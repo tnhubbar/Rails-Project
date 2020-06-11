@@ -3,7 +3,6 @@ class ExercisesController < ApplicationController
     def index 
         if params[:routine_id]
             @exercises = Routine.find(params[:routine_id]).exercises
-            binding.pry 
         else 
            @exercises = current_user.routines.map {|r| r.exercises }.flatten 
         end  
