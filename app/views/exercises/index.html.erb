@@ -1,5 +1,11 @@
-<h1>Exercises: </h1>
-
- <% @exercises.each do |e| %>
-<%= link_to e.name, routine_exercise_path(e) %><br/>
+<% if !params[:routine_id].blank? %>
+  <% @exercises = Exercises.where(routine: params[:routine]) %>
 <% end %>
+
+<h1>Exercises: </h1>
+ 
+ <% @exercises.each do |e| %>
+<%= link_to e.name, exercise_path(e) %><br/>
+
+<% end %>
+

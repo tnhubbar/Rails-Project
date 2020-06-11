@@ -1,19 +1,25 @@
 class ExercisesController < ApplicationController
     
-    def index
+    def index 
         if params[:routine_id]
-            @exercises = Routine.find(params[:routine_id]).exercises 
+            @exercises = Routine.find(params[:routine_id]).exercises
         else 
-            @exercises = Exercises.all 
+           @exercises = current_user.routines.map {|r| r.exercises }.flatten 
         end  
     end 
     
-    def new 
+    def new  
+        @exercise = Exercise.new    
+    end 
+
+    def create 
+        @exercise = Exercise.new(name: params[:name])
     end 
 
     def show 
-        @exercise = Exercises.find_by_id(params[:id])
+        @exercise = Exercise.find_by_id(params[:id])
     end 
+
 
     
 end
