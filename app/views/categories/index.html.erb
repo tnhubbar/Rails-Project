@@ -1,5 +1,7 @@
 <h1>Your current Categories: </h1>
 
+<ul>
 <% @categories.each do |c|%>
-<%= c.name%>
+<%= link_to c.name, category_path(c) %><br/>
 <% end %>
+</ul>

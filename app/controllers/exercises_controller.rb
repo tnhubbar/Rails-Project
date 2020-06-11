@@ -4,7 +4,8 @@ class ExercisesController < ApplicationController
         if params[:routine_id]
             @exercises = Routine.find(params[:routine_id]).exercises
         else 
-           @exercises = current_user.routines.map {|r| r.exercises }.flatten 
+           #@exercises = current_user.routines.map {|r| r.exercises }.flatten 
+           @exercises = current_user.exercises 
         end  
     end 
     

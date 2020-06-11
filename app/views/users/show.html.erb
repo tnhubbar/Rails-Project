@@ -1,29 +1,29 @@
 
 <div class="container text-center">
   <h1>Hello, <%= @user.name %></h1>
-  <br>
+  <br/>
 
   <h2>Below are your current Workout Routines! </h2>
   <% @user.routines.each do |r| %>
   <%= link_to r.name, routine_path(r) %> <br/><br/>
   <% end %>
 
-  <div>
-    <h3>Filter By Duration :</h3>
-    <%= form_tag("/routines", method: "get") do %>
-      <label>Routines less than or equal to is:</label>
-      <input type="integer" id="routine_duration" name="routine[duration]">
-      <%= submit_tag "Filter" %>
-    <% end %>
-  </div>
-
-  <br>
-  <h2>Or, add a new routine to your List: </h2>
+ <h3>Add a new routine to your List: </h3>
   <%= link_to "Add Routine", new_routine_path %>
 
-  <h1>You can also check out your routines by category: </h1>
+  <div>
+    <h3>Or Filter By Duration :</h3>
+    <%= form_tag("/routines", method: "get") do %>
+      <label>Routines less than or equal to:</label>
+      <input type="integer" id="routine_duration" name="routine[duration]">
+      <%= submit_tag "Filter" %> 
+    <% end %> minutes.
+  </div>
+
+
+  <h3>You can also check out your routines by category: </h3>
   <% @user.categories.each do |c| %>
-  <%= link_to c.name , category_routines_path(c.id) %><br/>
+  <%= link_to c.name , category_routines_path(c) %><br/>
   <% end %>
 
 

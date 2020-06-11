@@ -4,7 +4,7 @@ class RoutinesController < ApplicationController
     
     def index
         @categories = Category.all 
-        if !params[:category].blank?
+        if !params[:category_id].blank?
             @routines = Routine.all.by_category(params[:category_id]) 
         elsif !params[:routine][:duration].blank?
             @routines = Routine.by_duration(params[:routine][:duration])

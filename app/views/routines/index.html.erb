@@ -2,19 +2,18 @@
   <% @routines = Routine.where(category: params[:category]) %>
 <% end %>
 
-<h1> All Routines </h1>
+<h1> Routines </h1>
 
+<% @routines.each do |r| %>
+<%= link_to r.name, routine_path(r) %> <br/>
+<% end %>
 
+<% if params[:category_id].blank? %>
 <div>
-  <h3>Filter By Category :</h3>
+  <h4>Filter By Category :</h4>
   <%= form_tag("/routines", method: "get") do %>
     <%= select_tag "category", options_from_collection_for_select(Category.all, "id", "name"), include_blank: true %>
     <%= submit_tag "Filter" %>
   <% end %>
 </div>
-
-
-
-<% @routines.each do |r| %>
-<%= link_to r.name, routine_path(r) %> <br/>
-<% end %>
+<%end%>
