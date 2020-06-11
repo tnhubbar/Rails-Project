@@ -2,6 +2,7 @@
 <h3><%= @routine.category.name %></h3>
 <%= @routine.description %>
 
-Check out all the exercises in this routine:
-<%= link_to "Exercises", routine_exercises_path(@routine) %>
-routine_exercises_path       exercises#index
+<h3>Check out all the exercises in this routine:</h3>
+<%= link_to "Exercises", routine_exercises_path(@routine) %> 
+Or add an additional exercise to this routine: 
+<%= link_to "Add an Exercise to this routine", new_routine_exercise_path(@routine) %>

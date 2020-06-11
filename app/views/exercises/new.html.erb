@@ -3,5 +3,6 @@
 <%= form_for @exercise do |f| %>
 <%= f.label :name %>
 <%= f.text_field :name %>
+<%= f.hidden_field :routine_id %>
     <%= f.submit %>
     <% end %>
