@@ -6,3 +6,5 @@
 <%= link_to "Exercises", routine_exercises_path(@routine) %> 
 Or add an additional exercise to this routine: 
 <%= link_to "Add an Exercise to this routine", new_routine_exercise_path(@routine) %>
+<%= link_to "Edit this Routine", edit_routine_path(@routine) %>
+<%= button_to "Delete", @routine, method: :delete %>
