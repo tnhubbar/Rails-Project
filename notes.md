@@ -1,9 +1,5 @@
 
 
-
-
-    
-
 X Use the Ruby on Rails framework.
 
 Your models must:
