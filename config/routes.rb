@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
   resources :users
-  resources :routines
+  resources :routines 
   
   resources :categories do 
     resources :routines 
@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get '/signup' => 'users#new'
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
-  post '/logout' => 'sessions#destroy'
+  post "/logout" => 'sessions#destroy'
   get '/auth/facebook/callback' => 'sessions#fb_create'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

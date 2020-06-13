@@ -15,9 +15,9 @@
     <h3>Or Filter By Duration :</h3>
     <%= form_tag("/routines", method: "get") do %>
       <label>Routines less than or equal to:</label>
-      <input type="integer" id="routine_duration" name="routine[duration]">
+      <input type="integer" id="routine_duration" name="routine[duration]"> minutes.
       <%= submit_tag "Filter" %> 
-    <% end %> minutes.
+    <% end %>
   </div>
 
 
@@ -28,7 +28,8 @@
 
 
 
-  Or check out all of your exercises: 
+  <h2> Or check out all of your exercises: </h2>
+  <%= link_to "My Exercises" , exercises_path(current_user.id) %>
 
 
 

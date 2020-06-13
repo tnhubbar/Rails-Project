@@ -16,7 +16,7 @@
 <%= f.label :description %>
 <%= f.text_field :description %>
 
-<%= f.label :duration %>
+<%= f.label "Duration in Minutes" %>
 <%= f.text_field :duration %>
 
 <%= f.fields_for :category do |cat| %>
@@ -31,7 +31,7 @@
 
   <br/>
   <br/>
-
+    <h4>Exercises</h4>
      <%= f.fields_for :exercises do |eform| %>
     <%= eform.label "Name"%>
     <%= eform.text_field :name %>

@@ -1,25 +1,23 @@
+
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>WorkoutApp</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
-     <div class="topnav">
-        <% if current_user %>
-       <%= link_to "My Routines", user_path(current_user.id) %>
-        <%= link_to "My Exercises", exercises_path %>
-        <%= link_to "My Categories", categories_path %>
-        <%=link_to "Logout", logout_path, method: :post %>
-      <%end%>
-      </div>
-     
-    <%= yield %>
-  
-  </body>
+<head>
+<title>WorkoutApp</title>
+<%= csrf_meta_tags %>
+<%= csp_meta_tag %>
+<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+<%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+<body style="background-color:NavajoWhite">
+<div class="topnav" style="background-color:GoldenRod; padding:10px;">
+<% if current_user %>
+<%= link_to "My Routines", user_path(current_user.id) %>
+<%= link_to "My Exercises", exercises_path %>
+<%= link_to "My Categories", categories_path %>
+<%=link_to "Logout", logout_path, method: :post %>
+<%end%>
+</div>
+<%= yield %>
+</div>
+</body>
 </html>

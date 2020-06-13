@@ -6,7 +6,7 @@ class RoutinesController < ApplicationController
         @categories = Category.all 
         if !params[:category_id].blank?
             @routines = Routine.all.by_category(params[:category_id]) 
-        elsif !params[:routine][:duration].blank?
+        elsif params[:routine] && !params[:routine][:duration].blank?
             @routines = Routine.by_duration(params[:routine][:duration])
         else 
         @routines = Routine.all 
@@ -51,9 +51,9 @@ class RoutinesController < ApplicationController
       end
 
       def destroy
-        @routine = Rountine.find(params[:id])
+        @routine = Routine.find(params[:id])
         @routine.destroy
-        flash[:notice] = "Workout Routine deleted."
+        flash[:notice] = "Workout Routine deleted." 
         redirect_to routines_path
       end
     
@@ -62,7 +62,13 @@ class RoutinesController < ApplicationController
         @routine = Routine.find_by(id: params[:id]) 
     end 
 
+    private 
+
     def routine_params
         params.require(:routine).permit(:name, :duration, :description, category_attributes: [:name, :id], exercises_attributes: [:name, :id])
+    end 
+
+    def set_routine
+        @routine = Routine.find_by(id: params[:id])
     end 
 end

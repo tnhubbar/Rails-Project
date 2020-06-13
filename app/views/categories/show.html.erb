@@ -1,6 +1,5 @@
-<%= binding.pry %>
+
 <h2><%= @category.name %><br/></h2>
 
-<h3>Other Routines in this Category: </h3><br/>
-<%= link_to "List of Routines", category_routines_path(@category.id) %>
+<%= link_to "Other Routines in This Category", category_routines_path(@category.id) %>
 
