@@ -13,3 +13,4 @@ Or add an additional exercise to this routine:
 <%= button_to "Add an Exercise to this routine", new_routine_exercise_path(@routine), method: :get %> <br/>
 <%= button_to "Edit this Routine", edit_routine_path(@routine), method: :get %>
 <%= button_to "Delete", @routine, method: :delete %>
+<%= link_to "Back to Home", user_path(current_user.id) %>
