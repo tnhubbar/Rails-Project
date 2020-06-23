@@ -10,7 +10,7 @@ class RoutinesController < ApplicationController
         elsif params[:routine] && !params[:routine][:duration].blank?
             @routines = Routine.by_duration(params[:routine][:duration])
         elsif params[:name]
-            @routines = Routine.where('name LIKE ?', "%#{params[:name]}%")
+            @routines = Routine.search(params[:name])
         else 
         @routines = Routine.all 
         end  
@@ -65,10 +65,7 @@ class RoutinesController < ApplicationController
         set_routine 
     end 
     
-    def self.search(search_name)
-        search_name = "%" + name + "%"
-        self.where("name LIKE ?", search_name)
-    end 
+  
 
     private 
 

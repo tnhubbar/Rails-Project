@@ -19,4 +19,9 @@ class Routine < ApplicationRecord
         where(category: category_id)
     end 
 
+    def self.search(search_name)
+        search_name = "%" + search_name + "%"
+        self.where("name LIKE ?", search_name)
+    end 
+
 end
