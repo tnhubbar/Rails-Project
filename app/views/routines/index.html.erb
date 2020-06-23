@@ -1,8 +1,8 @@
-<% if !params[:category].blank? %>
-  <% @routines = Routine.where(category: params[:category]) %>
-<% end %>
+
 
 <h1> Routines </h1>
+
+
 
 <% @routines.each do |r| %>
 <%= link_to r.name, routine_path(r) %> <br/>
