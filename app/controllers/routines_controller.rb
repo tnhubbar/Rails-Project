@@ -1,5 +1,6 @@
 class RoutinesController < ApplicationController
     helper_method :params
+    before_action :require_logged_in 
      
     
     def index
@@ -23,10 +24,7 @@ class RoutinesController < ApplicationController
     end 
 
     def create 
-        
-        @routine = Routine.new(routine_params)
-        @routine.user = current_user  
-        @routine.save 
+        @routine = current_user.routines.build(routine_params)
         if @routine.save
         redirect_to routine_path(@routine)
         else 

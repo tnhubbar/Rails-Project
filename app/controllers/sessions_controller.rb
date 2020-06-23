@@ -3,12 +3,10 @@ class SessionsController < ApplicationController
     end 
 
     def fb_create
-      @user = User.find_or_create_by(username: auth["info"]["email"])
-      if !@user.password
-        @user.password = 'omniauth_password' #REVISIT THIS TO MAKE RANDOM 
+      @user = User.find_or_create_by(username: auth["info"]["email"]) do |user|
+        user.name = auth["info"]["name"]
+        user.password = "password"
       end
-      @user.name = auth["info"]["name"]
-      @user.save
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     end

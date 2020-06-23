@@ -4,6 +4,7 @@ class Routine < ApplicationRecord
     has_many :exercises
     accepts_nested_attributes_for :exercises
     scope :by_duration, -> (duration){ where("duration <= ?", duration) }
+    
 
 
     def category_attributes=(attr)

@@ -15,8 +15,11 @@ class ExercisesController < ApplicationController
 
     def create 
         @exercise = Exercise.new(exercise_params)
-        @exercise.save 
-        redirect_to exercise_path(@exercise) 
+        if @exercise.save 
+        redirect_to exercise_path(@exercise)    
+        else
+       render 'routine/new', notice: 'Exercise does not include a name'
+        end 
     end 
 
     def show 
