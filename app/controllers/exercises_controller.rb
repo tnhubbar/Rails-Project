@@ -29,6 +29,7 @@ class ExercisesController < ApplicationController
 
     def destroy
         @exercise = Exercise.find(params[:id])
+        nonowner
         @exercise.destroy
         flash[:notice] = "Exercise has been deleted." 
         redirect_to user_path(current_user.id)
@@ -38,6 +39,13 @@ class ExercisesController < ApplicationController
 
     def exercise_params 
         params.require(:exercise).permit(:name, :routine_id)
+    end 
+    def nonowner
+        if current_user != @exercise.routine.user 
+            redirect_to '/'
+            flash[:notice] =  "You aren't the owner my friend, you cannot modify."
+        end 
+         
     end 
 
     

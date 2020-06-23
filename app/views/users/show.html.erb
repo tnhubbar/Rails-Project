@@ -21,7 +21,14 @@
       <input type="integer" id="routine_duration" name="routine[duration]"> minutes.
       <%= submit_tag "Filter" %> 
     <% end %>
+    <h3>Or Search for Routine by name:</h3>
+    <%= form_tag("/routines", method: "get") do %>
+      <label>Name: </label>
+      <%= text_field_tag :name %>
+      <%= submit_tag 'Search' %> 
+    <% end %>
   </div>
+
 
 
   <h3>You can also check out your routines by category: </h3>
@@ -40,4 +47,4 @@
     <input type=submit value='logout'>
   <% end %>
 
-</div>
+</>

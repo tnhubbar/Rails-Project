@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     helper_method :current_user 
-    before_action :require_logged_in, only: [:new, :create]
+    before_action :require_logged_in, except: [:new, :create]
     
     def new
         @user = User.new 
@@ -17,7 +17,6 @@ class UsersController < ApplicationController
     end
 
     def show
-        require_logged_in
         @user = (User.find_by(id: session[:user_id]))
     end 
 

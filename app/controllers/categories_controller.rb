@@ -6,7 +6,7 @@ class CategoriesController < ApplicationController
       end 
   
       def create
-        Category.create(category_params)
+        Category.find_by_or_create(category_params)
       end
 
       def show
