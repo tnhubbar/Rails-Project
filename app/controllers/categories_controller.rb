@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+  before_action :require_logged_in
       
       def index
         @categories = current_user.categories 

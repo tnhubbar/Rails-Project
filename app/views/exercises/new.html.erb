@@ -1,5 +1,14 @@
 <h1>Create a New Exercise</h1>
 
+
+<% if @exercise.errors.any? %>
+  <ul>
+    <% @exercise.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <%end%>
+  </ul>
+<%end%>
+
 <%= form_for @exercise do |f| %>
 <%= f.label :name %>
 <%= f.text_field :name %>

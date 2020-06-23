@@ -1,5 +1,6 @@
 class ExercisesController < ApplicationController
-    
+    before_action :require_logged_in
+
     def index 
         if params[:routine_id]
             @exercises = Routine.find(params[:routine_id]).exercises
@@ -18,7 +19,7 @@ class ExercisesController < ApplicationController
         if @exercise.save 
         redirect_to exercise_path(@exercise)    
         else
-       render 'routine/new', notice: 'Exercise does not include a name'
+       render :new
         end 
     end 
 
