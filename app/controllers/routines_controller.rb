@@ -39,7 +39,7 @@ class RoutinesController < ApplicationController
     end 
 
     def update
-        set_routine
+        set_routine 
     
         @routine.update(routine_params)
     
@@ -51,7 +51,7 @@ class RoutinesController < ApplicationController
       end
 
       def destroy
-        set_routine 
+       set_routine 
         @routine.destroy
         flash[:notice] = "Workout Routine deleted." 
         redirect_to routines_path
@@ -59,7 +59,7 @@ class RoutinesController < ApplicationController
     
 
     def show 
-        @routine = Routine.find_by(id: params[:id]) 
+        set_routine 
     end 
 
     private 
