@@ -11,6 +11,7 @@
 <body style="background-color:NavajoWhite">
 <div class="topnav" style="background-color:GoldenRod; padding:10px;">
 <% if current_user %>
+<%= link_to "About" %>
 <%= link_to "My Routines", user_path(current_user.id) %>
 <%= link_to "My Exercises", exercises_path %>
 <%= link_to "My Categories", categories_path %>
